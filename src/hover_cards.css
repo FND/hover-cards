@@ -1,0 +1,66 @@
+.popup {
+	padding: 0.5em;
+	border-radius: 3px;
+	box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+}
+
+.popup .popup-coupler {
+	position: absolute;
+	width: 0;
+	height: 0;
+	margin: 5px;
+	border-style: solid;
+}
+
+.popup[x-placement] .popup-coupler {
+	border-width: 5px;
+	border-color: transparent;
+}
+.popup[x-placement^="top"] .popup-coupler,
+.popup[x-placement^="bottom"] .popup-coupler {
+	left: calc(50% - 5px);
+	margin-top: 0;
+	margin-bottom: 0;
+}
+.popup[x-placement^="left"] .popup-coupler,
+.popup[x-placement^="right"] .popup-coupler {
+	top: calc(50% - 5px);
+	margin-left: 0;
+	margin-right: 0;
+}
+
+.popup[x-placement^="top"] {
+	margin-bottom: 5px;
+}
+.popup[x-placement^="top"] .popup-coupler {
+	bottom: -5px;
+	border-bottom-width: 0;
+	border-top-color: black;
+}
+
+.popup[x-placement^="bottom"] {
+	margin-top: 5px;
+}
+.popup[x-placement^="bottom"] .popup-coupler {
+	top: -5px;
+	border-top-width: 0;
+	border-bottom-color: black;
+}
+
+.popup[x-placement^="left"] {
+	margin-right: 5px;
+}
+.popup[x-placement^="left"] .popup-coupler {
+	right: -5px;
+	border-right-width: 0;
+	border-left-color: black;
+}
+
+.popup[x-placement^="right"] {
+	margin-left: 5px;
+}
+.popup[x-placement^="right"] .popup-coupler {
+	left: -5px;
+	border-left-width: 0;
+	border-right-color: black;
+}

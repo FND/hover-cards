@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<title>hover-cards</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="../src/hover_cards.css">
+	<style>
+body {
+	max-width: 40em;
+	margin: 0 auto;
+	font-family: sans-serif;
+}
+
+ul {
+	padding: 0;
+	list-style-type: none;
+}
+
+li {
+	margin-bottom: 0.5em;
+	border-radius: 3px;
+	padding: 0.5em;
+	background-color: #DDD;
+	cursor: help;
+}
+
+hover-cards .popup {
+	max-width: 40em; /* XXX: hacky */
+	border: 1px solid #AAA;
+	background-color: #EEE;
+}
+	</style>
+</head>
+
+<body>
+	<h1>hover-cards</h1>
+	<hover-cards targets="li">
+		<ul>
+			<li><a href="foo.html">foo</a></li>
+			<li><a href="bar.html">bar</a></li>
+			<li><a href="baz.html">baz</a></li>
+		</ul>
+	</hover-cards>
+
+	<script src="https://unpkg.com/popper.js@1.14.4/dist/umd/popper.min.js"></script>
+	<script src="../dist/bundle.js"></script>
+	<script>
+(function() {
+
+customElements.get("hover-cards").prototype.determineContent = node => {
+	let link = node.querySelector("a");
+	if(!link) {
+		return Promise.resolve(null);
+	}
+
+	return fetch(link.href).
+		then(res => {
+			if(!res.ok) {
+				throw new Error("bleh");
+			}
+			return res.text();
+		});
+};
+
+}());
+	</script>
+</body>
+
+</html>
