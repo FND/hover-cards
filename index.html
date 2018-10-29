@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<title>hover-cards</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="../src/hover_cards.css">
+	<link rel="stylesheet" href="src/hover_cards.css">
 	<style>
 body {
 	max-width: 40em;
@@ -35,7 +35,9 @@ hover-cards .popup {
 </head>
 
 <body>
-	<h1>hover-cards</h1>
+	<h1>
+		<a href="https://github.com/FND/hover-cards">hover-cards</a>
+	</h1>
 	<hover-cards targets="li">
 		<ul>
 			<li><a href="foo.html">foo</a></li>
@@ -44,8 +46,15 @@ hover-cards .popup {
 		</ul>
 	</hover-cards>
 
+	<script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=Promise"></script>
+	<script src="https://unpkg.com/unfetch/polyfill"></script>
+	<script>
+if(!window.customElements) { // load polyfill
+	document.write('<script src="//cdnjs.cloudflare.com/ajax/libs/document-register-element/1.12.0/document-register-element.js"><\/script>');
+}
+	</script>
 	<script src="https://unpkg.com/popper.js@1.14.4/dist/umd/popper.min.js"></script>
-	<script src="../dist/bundle.js"></script>
+	<script src="dist/bundle.js"></script>
 	<script>
 (function() {
 
